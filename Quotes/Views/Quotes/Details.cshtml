@@ -1,0 +1,42 @@
+﻿@model Quotes.Model.Quote
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Quote</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorInfo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AuthorInfo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.QuoteText)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.QuoteText)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Modify">Back to List</a>
+</div>
