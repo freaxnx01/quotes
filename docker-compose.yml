@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  test-mgrabber:
+    container_name: test-quotes
+    image: quotes
+    init: true
+    stdin_open: true
+    tty: true
+    ports:
+      - "8999:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+    environment:
+      - TZ=Europe/Zurich
