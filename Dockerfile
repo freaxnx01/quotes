@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-alpine AS build-env
 WORKDIR /app
 
 # Copy csproj and restore as distinct layers
@@ -15,7 +15,7 @@ COPY src/appsettings.json out/appsettings.json
 COPY src/quote.db out/quote.db
 
 # Build runtime image
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-alpine
 EXPOSE 80
 
 # alias for root
