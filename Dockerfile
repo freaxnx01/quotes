@@ -25,8 +25,8 @@ WORKDIR /app
 COPY --from=build-env /app/out .
 
 # supervisor
-RUN apt-get update
-RUN apt-get -y install supervisor
+RUN apk update && apk add supervisor
+#RUN apt-get update && apt-get -y install supervisor
 COPY supervisord.conf /etc/supervisor/supervisord.conf
 
 COPY init.sh /
