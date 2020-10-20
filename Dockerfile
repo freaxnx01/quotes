@@ -15,11 +15,12 @@ COPY src/appsettings.json out/appsettings.json
 COPY src/quote.db out/quote.db
 
 # Build runtime image
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-alpine
+FROM mcr.microsoft.com/dotnet/core/runtime-deps:2.2-alpine as runtime
+#FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-alpine
 EXPOSE 80
 
 # alias for root
-RUN echo "alias ll='ls -l --color=auto --human-readable'" >> /root/.bashrc && echo "alias ls='ls --color=auto'" >> /root/.bashrc && echo "alias ..='cd ..'" >> /root/.bashrc
+#RUN echo "alias ll='ls -l --color=auto --human-readable'" >> /root/.bashrc && echo "alias ls='ls --color=auto'" >> /root/.bashrc && echo "alias ..='cd ..'" >> /root/.bashrc
 
 WORKDIR /app
 COPY --from=build-env /app/out .
