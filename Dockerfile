@@ -5,9 +5,14 @@ WORKDIR /app
 COPY src/*.csproj ./
 RUN dotnet restore
 
-# Copy everything else and build
+# Copy everything else
 COPY . ./
-RUN dotnet publish -c Release -o out
+
+# Build
+# Add IL Linker package
+RUN dotnet add package ILLink.Tasks -v 0.1.5-preview-1841731 -s https://dotnet.myget.org/F/dotnet-core/api/v3/index.json
+RUN dotnet publish -c Release -r linux-musl-x64 -o out --no-restore /p:ShowLinkerSizeComparison=true
+#RUN dotnet publish -c Release -o out
 
 # Copy additional files
 COPY src/Views out/Views
