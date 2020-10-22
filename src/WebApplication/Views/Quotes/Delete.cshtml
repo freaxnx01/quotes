@@ -1,0 +1,45 @@
+﻿@model Quotes.Data.Quote
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Quote</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorInfo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AuthorInfo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.QuoteText)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.QuoteText)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Modify">Back to List</a>
+    </form>
+</div>
