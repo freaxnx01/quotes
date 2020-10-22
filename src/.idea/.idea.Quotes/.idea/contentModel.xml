@@ -89,8 +89,10 @@
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
-              <e p="WebApplication.AssemblyInfo.cs" t="Include" />
-              <e p="WebApplication.RazorAssemblyInfo.cs" t="Include" />
+              <e p="linux-musl-x64" t="Include">
+                <e p="WebApplication.AssemblyInfo.cs" t="Include" />
+                <e p="WebApplication.RazorAssemblyInfo.cs" t="Include" />
+              </e>
             </e>
           </e>
         </e>
