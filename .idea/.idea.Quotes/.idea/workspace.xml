@@ -23,14 +23,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19c170e7-61cd-4bbb-ba16-32867000e38e" name="Default Changelist" comment="" />
+    <list default="true" id="19c170e7-61cd-4bbb-ba16-32867000e38e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Quotes/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Quotes/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Quotes/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Quotes/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Data.csproj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1jFAz6qR6CJxaHcJtsIMDZwozMw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -41,6 +45,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Project.ConsoleApp">
@@ -102,6 +107,7 @@
       <option name="presentableId" value="Default" />
       <updated>1603389728233</updated>
       <workItem from="1603389737877" duration="461000" />
+      <workItem from="1603458334518" duration="116000" />
     </task>
     <task id="LOCAL-00001" summary="netcoreapp3.1">
       <created>1603389886900</created>
@@ -123,7 +129,7 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -135,13 +141,25 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="netcoreapp3.1" />
     <option name="LAST_COMMIT_MESSAGE" value="netcoreapp3.1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="2194" y="278" width="800" height="684" key="#Docker" timestamp="1603458385997">
+      <screen x="1680" y="0" width="1920" height="1200" />
+    </state>
+    <state x="2194" y="278" width="800" height="684" key="#Docker/1680.0.1920.1200/0.27.1680.1023@1680.0.1920.1200" timestamp="1603458385997" />
+    <state x="2093" y="248" width="1022" height="737" key="SettingsEditor" timestamp="1603458450067">
+      <screen x="1680" y="0" width="1920" height="1200" />
+    </state>
+    <state x="2093" y="248" width="1022" height="737" key="SettingsEditor/1680.0.1920.1200/0.27.1680.1023@1680.0.1920.1200" timestamp="1603458450067" />
     <state x="2199" y="349" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1603389943813">
       <screen x="1680" y="0" width="1920" height="1200" />
     </state>

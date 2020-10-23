@@ -1,40 +1,26 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine AS build-env
+FROM mcr.microsoft.com/dotnet/core/runtime-deps:3.1-alpine AS base
 WORKDIR /app
-
-# Copy csproj and restore as distinct layers
-COPY src/*.sln ./
-RUN dotnet restore -r linux-musl-x64
-
-# Copy everything else and build
-COPY . ./
-RUN dotnet publish -c Release -r linux-musl-x64 -o out --no-restore
-
-WebApplication
-Data
-
-
-
-# Copy additional files
-COPY src/WebApplication/Views out/Views
-COPY src/WebApplication/appsettings.json out/appsettings.json
-COPY src/WebApplication/data/quote.db out/quote.db
-
-# Build runtime image
-FROM mcr.microsoft.com/dotnet/core/runtime-deps:3.1-alpine as runtime
 EXPOSE 80
 
-# alias for root
-#RUN echo "alias ll='ls -l --color=auto --human-readable'" >> /root/.bashrc && echo "alias ls='ls --color=auto'" >> /root/.bashrc && echo "alias ..='cd ..'" >> /root/.bashrc
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine AS build
+WORKDIR /src
+COPY *.sln ./
+COPY Data/*.csproj ./Data/
+COPY WebApplication/*.csproj ./WebApplication/
 
+RUN dotnet restore -r linux-musl-x64
+COPY . .
+WORKDIR /src/Data
+RUN dotnet build -c Release -r linux-musl-x64 -o out --no-restore
+
+WORKDIR /src/WebApplication
+RUN dotnet build -c Release -r linux-musl-x64 -o out --no-restore
+
+FROM build AS publish
+RUN dotnet publish -c Release -r linux-musl-x64 -o out --no-restore
+
+FROM base AS final
 WORKDIR /app
-COPY --from=build-env /app/out .
-
-# supervisor
-# RUN apt-get update
-# RUN apt-get -y install supervisor
-# COPY supervisord.conf /etc/supervisor/supervisord.conf
-# COPY init.sh /
-# RUN ["chmod", "+x", "/init.sh"]
-#ENTRYPOINT ["/init.sh"]
-
+COPY --from=publish /app .
+# ENTRYPOINT ["dotnet", "WebAPIProject.dll"]
 ENTRYPOINT ["/app/quotes"]
