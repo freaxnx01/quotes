@@ -1,21 +1,26 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-alpine AS build-env
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine AS build-env
 WORKDIR /app
 
 # Copy csproj and restore as distinct layers
-COPY src/*.csproj ./
+COPY src/*.sln ./
 RUN dotnet restore -r linux-musl-x64
 
 # Copy everything else and build
 COPY . ./
 RUN dotnet publish -c Release -r linux-musl-x64 -o out --no-restore
 
+WebApplication
+Data
+
+
+
 # Copy additional files
-COPY src/Views out/Views
-COPY src/appsettings.json out/appsettings.json
-COPY src/quote.db out/quote.db
+COPY src/WebApplication/Views out/Views
+COPY src/WebApplication/appsettings.json out/appsettings.json
+COPY src/WebApplication/data/quote.db out/quote.db
 
 # Build runtime image
-FROM mcr.microsoft.com/dotnet/core/runtime-deps:2.2-alpine as runtime
+FROM mcr.microsoft.com/dotnet/core/runtime-deps:3.1-alpine as runtime
 EXPOSE 80
 
 # alias for root
