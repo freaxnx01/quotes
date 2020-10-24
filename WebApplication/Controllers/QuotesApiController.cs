@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Quotes.Data;
+using Quotes.DataModel;
 
 namespace Quotes.Controllers
 {

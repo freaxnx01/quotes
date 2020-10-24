@@ -39,7 +39,7 @@
                         <a asp-action="ForgotPassword">Forgot your password?</a>
                     </p>
                     <p>
-                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
+                        <a asp-action="Register" asp-route-returnurl="@ViewDataModel["ReturnUrl"]">Register as a new user?</a>
                     </p>
                 </div>*@
             </form>
@@ -62,7 +62,7 @@
                 }
                 else
                 {
-                    <form asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                    <form asp-action="ExternalLogin" asp-route-returnurl="@ViewDataModel["ReturnUrl"]" method="post" class="form-horizontal">
                         <div>
                             <p>
                                 @foreach (var provider in loginProviders)

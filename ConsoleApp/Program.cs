@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using Quotes.Data;
+using Quotes.DataModel;
 
 namespace ConsoleApp
 {

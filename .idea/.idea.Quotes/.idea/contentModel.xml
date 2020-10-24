@@ -15,13 +15,15 @@
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
-              <e p="ConsoleApp.AssemblyInfo.cs" t="Include" />
+              <e p="linux-musl-x64" t="Include">
+                <e p="ConsoleApp.AssemblyInfo.cs" t="Include" />
+              </e>
             </e>
           </e>
         </e>
       </e>
-      <e p="Data" t="IncludeRecursive">
-        <e p="Data.csproj" t="IncludeRecursive" />
+      <e p="DataModel" t="IncludeRecursive">
+        <e p="DataModel.csproj" t="IncludeRecursive" />
         <e p="Quote.cs" t="Include" />
         <e p="QuotesDbContext.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
@@ -29,7 +31,7 @@
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
               <e p="linux-musl-x64" t="Include">
-                <e p="Data.AssemblyInfo.cs" t="Include" />
+                <e p="DataModel.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
           </e>
@@ -84,9 +86,9 @@
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="data" t="Include">
-          <e p="app.db" t="Include" />
-          <e p="quote.db" t="Include" />
+        <e p="data-default" t="Include">
+          <e p="app-default.db" t="Include" />
+          <e p="quote-default.db" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

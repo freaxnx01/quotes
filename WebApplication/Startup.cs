@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using DbHelpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Quotes.Data;
+using Quotes.DataModel;
 
 namespace WebApplication
 {
@@ -26,6 +28,8 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            CheckDatabases();
             
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("IdentityDbContext")));
@@ -48,6 +52,17 @@ namespace WebApplication
 
             services.AddScoped<IApplicationDbInitialization, ApplicationDbInitialization>();
             
+        }
+
+        private void CheckDatabases()
+        {
+            var quoteDbPath = Path.Combine("data", "quote.db");
+            var appDbPath = Path.Combine("data", "app.db");
+            var quoteDbDefaultPath = Path.Combine("data-default", "quote-default.db");
+            var appDbDefaultPath = Path.Combine("data-default", "app-default.db");
+            
+            if (!File.Exists(quoteDbPath)) File.Copy(quoteDbDefaultPath, quoteDbPath);
+            if (!File.Exists(appDbPath)) File.Copy(appDbDefaultPath, appDbPath);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

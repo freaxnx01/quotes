@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <RootNamespace>Quotes.Data</RootNamespace>
+        <RootNamespace>Quotes.DataModel</RootNamespace>
 
         <!-- Trimming -->
         <RuntimeIdentifier>linux-musl-x64</RuntimeIdentifier>

@@ -5,14 +5,14 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine AS build
 WORKDIR /src
 COPY *.sln ./
-COPY Data/*.csproj ./Data/
+COPY DataModel/*.csproj ./DataModel/
 COPY ConsoleApp/*.csproj ./ConsoleApp/
 COPY WebApplication/*.csproj ./WebApplication/
 
 RUN dotnet restore -r linux-musl-x64
 COPY . .
 
-WORKDIR /src/Data
+WORKDIR /src/DataModel
 RUN dotnet build -c Release -r linux-musl-x64 -o out
 
 WORKDIR /src/ConsoleApp
@@ -28,6 +28,13 @@ RUN dotnet publish -c Release -r linux-musl-x64 -o out
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /src/WebApplication/out .
-# COPY --from=publish /app .
-# ENTRYPOINT ["dotnet", "WebAPIProject.dll"]
+RUN mv out/* .. && rmdir out
+
+# data-default
+COPY WebApplication/data-default/* ./data-default/
+
+# data
+RUN mkdir /data
+RUN ln -s /data data
+
 ENTRYPOINT ["/app/WebApplication"]

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Quotes.Data
+namespace Quotes.DataModel
 {
     [Table("Quote")]
     public class Quote
