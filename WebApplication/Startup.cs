@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,7 +23,7 @@ namespace WebApplication
 
         public IConfiguration Configuration { get; }
 
-        private string PathBase => Configuration["pathBase"];
+        private string PathBase => string.Empty; // Configuration["pathBase"];
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -79,14 +80,20 @@ namespace WebApplication
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            
             // custom
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
+            
+            // custom
+            var settingsPathBase = Configuration.GetSection("Settings")["PathBase"];
+            Console.WriteLine($"Using PathBase: {settingsPathBase}");
+            app.UsePathBase(settingsPathBase);
+            //app.UsePathBase("/Quotes");
+            
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseRouting();
 

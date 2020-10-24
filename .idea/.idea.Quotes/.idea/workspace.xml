@@ -24,28 +24,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19c170e7-61cd-4bbb-ba16-32867000e38e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Quotes/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Quotes/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Quotes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Quotes/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApp/ConsoleApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleApp/ConsoleApp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleApp/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/DataModel/DataModel.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Quote.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataModel/Quote.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/QuotesDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataModel/QuotesDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication/Controllers/QuotesApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/Controllers/QuotesApiController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication/Controllers/QuotesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/Controllers/QuotesController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApplication/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication/Views/Account/AccessDenied.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/Views/Account/AccessDenied.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication/Views/Account/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/Views/Account/Login.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication/Views/Quotes/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/Views/Quotes/Create.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication/Views/Quotes/Delete.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/Views/Quotes/Delete.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication/Views/Quotes/Details.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/Views/Quotes/Details.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication/Views/Quotes/Edit.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/Views/Quotes/Edit.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication/Views/Quotes/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/Views/Quotes/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication/Views/Quotes/Modify.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/Views/Quotes/Modify.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication/WebApplication.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/WebApplication.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication/data/app.db" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/data-default/app-default.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApplication/data/quote.db" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/data-default/quote-default.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +67,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Project.ConsoleApp">
@@ -149,7 +130,7 @@
       <updated>1603389728233</updated>
       <workItem from="1603389737877" duration="461000" />
       <workItem from="1603458334518" duration="718000" />
-      <workItem from="1603540949375" duration="2457000" />
+      <workItem from="1603540949375" duration="5850000" />
     </task>
     <task id="LOCAL-00001" summary="netcoreapp3.1">
       <created>1603389886900</created>
@@ -198,10 +179,10 @@
       <screen x="1680" y="0" width="1920" height="1200" />
     </state>
     <state x="2194" y="278" width="800" height="684" key="#Docker/1680.0.1920.1200/0.27.1680.1023@1680.0.1920.1200" timestamp="1603458385997" />
-    <state x="2093" y="248" width="1022" height="737" key="SettingsEditor" timestamp="1603458450067">
+    <state x="2093" y="248" width="1022" height="737" key="SettingsEditor" timestamp="1603567401550">
       <screen x="1680" y="0" width="1920" height="1200" />
     </state>
-    <state x="2093" y="248" width="1022" height="737" key="SettingsEditor/1680.0.1920.1200/0.27.1680.1023@1680.0.1920.1200" timestamp="1603458450067" />
+    <state x="2093" y="248" width="1022" height="737" key="SettingsEditor/1680.0.1920.1200/0.27.1680.1023@1680.0.1920.1200" timestamp="1603567401550" />
     <state x="2199" y="349" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1603389943813">
       <screen x="1680" y="0" width="1920" height="1200" />
     </state>
