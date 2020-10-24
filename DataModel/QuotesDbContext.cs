@@ -20,8 +20,8 @@ namespace Quotes.Data
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            //=> options.UseSqlite(@"Data Source=data\quote.db");        
-            => options.UseSqlite($"Data Source={new FileInfo(Path.Combine("data", "quote.db")).FullName}");
+            //=> options.UseSqlite(@"DataModel Source=data\quote.db");        
+            => options.UseSqlite($"DataModel Source={new FileInfo(Path.Combine("data", "quote.db")).FullName}");
         
         public DbSet<Quote> Quote { get; set; }
     }
