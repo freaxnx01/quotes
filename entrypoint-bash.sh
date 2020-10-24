@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run -it --entrypoint /bin/bash quotes
+docker run -it --entrypoint /bin/ash quotes

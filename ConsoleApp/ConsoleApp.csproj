@@ -3,6 +3,10 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+
+        <!-- Trimming -->
+        <RuntimeIdentifier>linux-musl-x64</RuntimeIdentifier>
+        <PublishTrimmed>true</PublishTrimmed>
     </PropertyGroup>
 
     <ItemGroup>

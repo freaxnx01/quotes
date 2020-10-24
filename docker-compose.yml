@@ -7,7 +7,7 @@ services:
     stdin_open: true
     tty: true
     ports:
-      - "8999:80"
+      - "8123:80"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
