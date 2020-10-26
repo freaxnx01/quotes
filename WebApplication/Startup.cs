@@ -23,8 +23,6 @@ namespace WebApplication
 
         public IConfiguration Configuration { get; }
 
-        private string PathBase => string.Empty; // Configuration["pathBase"];
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -41,9 +39,9 @@ namespace WebApplication
 
             services.ConfigureApplicationCookie(options =>
             { 
-                options.LoginPath = $"{PathBase}/Account/Login";
-                options.LogoutPath = $"{PathBase}/Account/Logout";
-                options.AccessDeniedPath = $"{PathBase}/Account/AccessDenied";
+                options.LoginPath = $"/Account/Login";
+                options.LogoutPath = $"/Account/Logout";
+                options.AccessDeniedPath = $"/Account/AccessDenied";
             });
 
             services.AddSingleton<IConfiguration>(Configuration);
