@@ -1,10 +1,10 @@
 build_image:
   variables:
 
-  image: docker:git
+#  image: docker:git
 
-  services:
-    - docker:dind
+#   services:
+#    - docker:dind
 
   before_script:
     #- docker info
