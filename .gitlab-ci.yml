@@ -8,6 +8,9 @@ build_image:
 
   before_script:
     #- docker info
+    - echo $CI_REGISTRY
+    - echo $CI_PROJECT_PATH
+    - echo $CI_BUILD_TOKEN
 
   script:
     - docker build -t $CI_REGISTRY/$CI_PROJECT_PATH:latest .
