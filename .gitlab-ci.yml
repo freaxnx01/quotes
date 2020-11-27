@@ -3,7 +3,7 @@ build_image:
 
   image: docker:git
 
-   services:
+  services:
     - docker:dind
 
   before_script:
