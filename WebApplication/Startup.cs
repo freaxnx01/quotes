@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Quotes.DataModel;
 
 namespace WebApplication
@@ -19,13 +20,21 @@ namespace WebApplication
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            
+            // env
+            new ConfigurationBuilder()
+                .AddEnvironmentVariables()
+                .Build();
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // env
+            services.Configure<EnvironmentConfig>(Configuration);
+
             services.AddControllersWithViews();
 
             CheckDatabases();
@@ -65,7 +74,7 @@ namespace WebApplication
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IOptions<EnvironmentConfig> envConf)
         {
             if (env.IsDevelopment())
             {
@@ -85,11 +94,10 @@ namespace WebApplication
             });
             
             // custom
-            var settingsPathBase = Configuration.GetSection("Settings")["PathBase"];
+            var settingsPathBase = envConf.Value.QuotesPathBase.AsNullIfEmpty() ?? Configuration.GetSection("Settings")["PathBase"];
             Console.WriteLine($"Runtime: {System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription}");
             Console.WriteLine($"Using PathBase: {settingsPathBase}");
             app.UsePathBase(settingsPathBase);
-            //app.UsePathBase("/Quotes");
             
             app.UseHttpsRedirection();
             app.UseStaticFiles();

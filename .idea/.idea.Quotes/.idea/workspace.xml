@@ -24,7 +24,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19c170e7-61cd-4bbb-ba16-32867000e38e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/WebApplication/EnvironmentConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApplication/ExtensionHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Quotes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Quotes/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApplication/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApplication/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApplication/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,12 +57,17 @@
         <option value="$PROJECT_DIR$/WebApplication/Views/Quotes/Index.cshtml" />
         <option value="$PROJECT_DIR$/WebApplication/Views/Quotes/Modify.cshtml" />
         <option value="$PROJECT_DIR$/DataModel/QuotesDbContext.cs" />
+        <option value="$PROJECT_DIR$/WebApplication/EnvironmentConfig.cs" />
+        <option value="$PROJECT_DIR$/WebApplication/appsettings.json" />
+        <option value="$PROJECT_DIR$/WebApplication/ExtensionHelper.cs" />
         <option value="$PROJECT_DIR$/WebApplication/Startup.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1jFAz6qR6CJxaHcJtsIMDZwozMw" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -130,6 +140,7 @@
       <workItem from="1603458334518" duration="718000" />
       <workItem from="1603540949375" duration="5850000" />
       <workItem from="1603718920701" duration="725000" />
+      <workItem from="1606578105915" duration="2022000" />
     </task>
     <task id="LOCAL-00001" summary="netcoreapp3.1">
       <created>1603389886900</created>

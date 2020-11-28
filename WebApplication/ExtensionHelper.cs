@@ -1,4 +1,10 @@
-$HEADER$namespace $NAMESPACE$
+namespace WebApplication
 {
-  public class $CLASS$ {$END$}
+    public static class ExtensionHelper
+    {
+        public static string AsNullIfEmpty(this string str)
+        {
+            return !string.IsNullOrEmpty(str) ? str : null;
+        }
+    }
 }
