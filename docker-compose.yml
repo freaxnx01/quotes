@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  test-mgrabber:
+  test-quotes:
     container_name: test-quotes
     image: quotes
     init: true
