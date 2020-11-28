@@ -7,7 +7,7 @@ build_image:
     - docker:dind
 
   before_script:
-    #- docker info
+#    - docker info
 
   script:
     - docker build -t $CI_REGISTRY/$CI_PROJECT_PATH:latest .
