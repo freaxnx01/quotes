@@ -86,6 +86,7 @@ namespace WebApplication
             
             // custom
             var settingsPathBase = Configuration.GetSection("Settings")["PathBase"];
+            Console.WriteLine($"Runtime: {System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription}");
             Console.WriteLine($"Using PathBase: {settingsPathBase}");
             app.UsePathBase(settingsPathBase);
             //app.UsePathBase("/Quotes");
