@@ -1,7 +1,7 @@
 build_image:
   variables:
 
-  image: docker:git
+  image: registry.freaxnx01.ch/mydocker-build/build-ci:latest
 
   services:
     - docker:dind
