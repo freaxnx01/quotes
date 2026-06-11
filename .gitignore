@@ -357,3 +357,5 @@ MigrationBackup/
 
 # JetBrains Rider IDE
 .idea/
+# Runtime SQLite databases (purged from history 2026-06-11 — never commit)
+*.db
