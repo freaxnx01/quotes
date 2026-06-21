@@ -3,12 +3,11 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
 
-        <TargetFramework>net5.0</TargetFramework>
-        <!-- <TargetFramework>netcoreapp3.1</TargetFramework> -->
+        <TargetFramework>net10.0</TargetFramework>
 
         <!-- Trimming -->
         <RuntimeIdentifier>linux-musl-x64</RuntimeIdentifier>
-        <PublishTrimmed>true</PublishTrimmed>
+        <PublishTrimmed>false</PublishTrimmed>
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,7 +20,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.0-rc.2.20475.6" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.9" />
+      <!-- Pin patched SQLite native (EF Core pulls vulnerable 2.1.11 transitively, GHSA-2m69-gcr7-jv3q) -->
+      <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.3" />
     </ItemGroup>
 
     <ItemGroup>
