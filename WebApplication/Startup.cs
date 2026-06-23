@@ -37,8 +37,6 @@ namespace WebApplication
 
             services.AddControllersWithViews();
 
-            CheckDatabases();
-            
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("IdentityDbContext")));
 
@@ -62,20 +60,24 @@ namespace WebApplication
             
         }
 
-        private void CheckDatabases()
+        // Create the SQLite databases on first run (schema via EnsureCreated; the
+        // Identity DB also seeds the admin user/role from AdminUserSettings config).
+        private static void InitializeDatabases(IApplicationBuilder app)
         {
-            var quoteDbPath = Path.Combine("data", "quote.db");
-            var appDbPath = Path.Combine("data", "app.db");
-            var quoteDbDefaultPath = Path.Combine("data-default", "quote-default.db");
-            var appDbDefaultPath = Path.Combine("data-default", "app-default.db");
-            
-            if (!File.Exists(quoteDbPath)) File.Copy(quoteDbDefaultPath, quoteDbPath);
-            if (!File.Exists(appDbPath)) File.Copy(appDbDefaultPath, appDbPath);
+            Directory.CreateDirectory("data");
+
+            using var scope = app.ApplicationServices.CreateScope();
+            var services = scope.ServiceProvider;
+
+            services.GetRequiredService<QuotesDbContext>().Database.EnsureCreated();
+            services.GetRequiredService<IApplicationDbInitialization>().Init();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IOptions<EnvironmentConfig> envConf)
         {
+            InitializeDatabases(app);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

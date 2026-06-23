@@ -1,8 +1,8 @@
-FROM mcr.microsoft.com/dotnet/runtime-deps:5.0-alpine AS base
+FROM mcr.microsoft.com/dotnet/runtime-deps:10.0-alpine AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/sdk:5.0-alpine AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0-alpine AS build
 WORKDIR /src
 COPY *.sln ./
 COPY DataModel/*.csproj ./DataModel/
@@ -22,19 +22,16 @@ WORKDIR /src/WebApplication
 RUN dotnet build -c Release -r linux-musl-x64 -o out
 
 FROM build AS publish
-RUN dotnet publish -c Release -r linux-musl-x64 -o out
+# --self-contained is explicit: since .NET 7 `-r` no longer implies it (.NET 5 did),
+# and the runtime-deps base ships no .NET runtime.
+RUN dotnet publish -c Release -r linux-musl-x64 --self-contained true -o out
 #-p:PublishReadyToRun=true -p:PublishReadyToRunShowWarnings=true
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /src/WebApplication/out .
-RUN mv out/* .. && rmdir out
+COPY --from=publish /src/WebApplication/out ./
 
-# data-default
-COPY WebApplication/data-default/* ./data-default/
-
-# data
-RUN mkdir /data
-RUN ln -s /data data
+# data (DBs are created on first run by the app; persisted via this volume mount)
+RUN mkdir /data && ln -s /data data
 
 ENTRYPOINT ["/app/WebApplication"]
