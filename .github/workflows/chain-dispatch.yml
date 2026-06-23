@@ -3,9 +3,12 @@ on:
   pull_request:
     types: [closed]
 
-# Minimum the reusable workflow's dispatch job needs: read the closed PR/issue,
-# and trigger the successor run via the Actions API. (CONSUMER-SETUP §4)
+# Minimum the reusable workflow needs: contents:read (the callee declares it at
+# top level — a caller can't grant a reusable workflow less than it needs, or the
+# run dies at startup_failure), read the closed PR/issue, and trigger the
+# successor run via the Actions API. (CONSUMER-SETUP §4)
 permissions:
+  contents: read
   issues: read
   pull-requests: read
   actions: write
