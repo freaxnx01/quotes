@@ -1,0 +1,31 @@
+name: OpenCode
+on:
+  issues:
+    types: [labeled]
+
+# Same permission set as claude.yml — the reusable workflow needs contents:write
+# (branch + push), pull-requests:write (open draft PR), issues:write (label ops).
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  opencode:
+    if: github.event.label.name == 'ai-implement-oc'
+    # Pinned to the same immutable SHA as claude.yml — bump both in lockstep.
+    # Current: v1.6.0.
+    uses: freaxnx01/agent-pipeline/.github/workflows/claude-implement.yml@9f7043dc5a99500c6fdeb3d468b3e06f9f81315d
+    secrets:
+      # Required by the reusable workflow even on the opencode path.
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+    with:
+      issue-number: ${{ github.event.issue.number }}
+      # Keep scripts checkout on the SAME ref as `uses:` above (CONSUMER-SETUP Gotcha #1).
+      pipeline-ref: 9f7043dc5a99500c6fdeb3d468b3e06f9f81315d
+      # Public repo → GitHub-hosted runners only (DESIGN.md, non-negotiable).
+      runner-labels: '["ubuntu-latest"]'
+      agent: opencode
+      default-model: qwen/qwen2.5-coder-32b-instruct
+      # Draft-only posture — same graduation policy as claude.yml.
