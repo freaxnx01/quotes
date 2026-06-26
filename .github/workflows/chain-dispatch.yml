@@ -21,12 +21,12 @@ jobs:
       && contains(github.event.pull_request.labels.*.name, 'ai-implement')
     # Pinned to an immutable commit SHA (supply-chain hardening), kept in lockstep
     # with claude.yml. Bump both deliberately in a reviewed PR. Current: post-v1.6.0.
-    uses: freaxnx01/agent-pipeline/.github/workflows/chain-dispatch.yml@2c1600e8b71155af7f99a03d70fb8aee142de02d
+    uses: freaxnx01/agent-pipeline/.github/workflows/chain-dispatch.yml@bae2aa2d099b9ed2a595fbd680232779bf56c8bf
     with:
       closed-pr-number: ${{ github.event.pull_request.number }}
       # Keep the cross-repo scripts checkout on the SAME ref as `uses:` above —
       # pipeline-ref defaults to `main` and would otherwise skew (Gotcha #1).
-      pipeline-ref: 2c1600e8b71155af7f99a03d70fb8aee142de02d
+      pipeline-ref: bae2aa2d099b9ed2a595fbd680232779bf56c8bf
       # target-workflow defaults to claude.yml, which matches our stub filename.
     secrets:
       # Ambient repo token; the dispatch job needs issues:read, pull-requests:read,
