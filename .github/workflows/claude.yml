@@ -16,8 +16,8 @@ jobs:
     if: github.event.label.name == 'ai-implement'
     # Pinned to an immutable commit SHA (supply-chain hardening) rather than the
     # moving @v1 tag. Bump deliberately in a reviewed PR. Current: post-v1.6.0
-    # (OpenRouter model labels + slugs + triage agent fix — #94/#96/#97).
-    uses: freaxnx01/agent-pipeline/.github/workflows/claude-implement.yml@2c1600e8b71155af7f99a03d70fb8aee142de02d
+    # (OpenRouter model labels + slugs + triage fix + more models — #94/#96/#97/#98).
+    uses: freaxnx01/agent-pipeline/.github/workflows/claude-implement.yml@bae2aa2d099b9ed2a595fbd680232779bf56c8bf
     secrets:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
@@ -26,7 +26,7 @@ jobs:
       # Keep the cross-repo scripts checkout on the SAME ref as `uses:` above —
       # pipeline-ref defaults to `main`, which would skew against the pinned
       # workflow (CONSUMER-SETUP Gotcha #1).
-      pipeline-ref: 2c1600e8b71155af7f99a03d70fb8aee142de02d
+      pipeline-ref: bae2aa2d099b9ed2a595fbd680232779bf56c8bf
       # Public repo → GitHub-hosted runners only (never self-hosted; fork-PR
       # attack surface). DESIGN.md, non-negotiable.
       runner-labels: '["ubuntu-latest"]'
