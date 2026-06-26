@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Quotes.DataModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace Quotes.Controllers
 {
@@ -33,12 +34,60 @@ namespace Quotes.Controllers
             return new ObjectResult(item);
         }
 
-        [HttpGet("random")]
-        public IActionResult GetRandom()
+        [HttpGet("search")]
+        public IActionResult Search([FromQuery] string author, [FromQuery] string q, [FromQuery] string from, [FromQuery] string to, [FromQuery] int page = 1, [FromQuery] int pageSize = 20)
         {
-            var ids = _context.Quote.Select(q => q.ID).ToList();
-            int randomIndex = new Random().Next(0, ids.Count - 1);
-            return GetById(ids[randomIndex]);
+            // Validate input
+            if (page < 1 || pageSize < 1 || pageSize > 100)
+                return BadRequest();
+
+            DateTime? fromDate = null;
+            DateTime? toDate = null;
+
+            if (!string.IsNullOrEmpty(from) && !DateTime.TryParse(from, out DateTime parsedFrom))
+                return BadRequest();
+            else if (!string.IsNullOrEmpty(from))
+                fromDate = parsedFrom;
+
+            if (!string.IsNullOrEmpty(to) && !DateTime.TryParse(to, out DateTime parsedTo))
+                return BadRequest();
+            else if (!string.IsNullOrEmpty(to))
+                toDate = parsedTo;
+
+            if (fromDate != null && toDate != null && fromDate > toDate)
+                return BadRequest();
+
+            // Build query
+            var query = _context.Quote.AsNoTracking();
+
+            if (!string.IsNullOrEmpty(author))
+                query = query.Where(x => EF.Functions.Like(x.Author, $"%{author}%"));
+
+            if (!string.IsNullOrEmpty(q))
+                query = query.Where(x => EF.Functions.Like(x.QuoteText, $"%{q}%"));
+
+            if (fromDate != null)
+                query = query.Where(x => x.Date >= fromDate);
+
+            if (toDate != null)
+                query = query.Where(x => x.Date <= toDate);
+
+            // Get total count and paginated results
+            var total = query.Count();
+            var items = query
+                .OrderByDescending(q => q.Date)
+                .ThenByDescending(q => q.ID)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            return new OkObjectResult(new
+            {
+                items,
+                page,
+                pageSize,
+                total
+            });
         }
     }
 }
