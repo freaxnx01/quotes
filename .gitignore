@@ -359,3 +359,6 @@ MigrationBackup/
 .idea/
 # Runtime SQLite databases (purged from history 2026-06-11 — never commit)
 *.db
+
+# Project-local git worktrees (CLAUDE.md convention)
+.worktrees/
