@@ -26,7 +26,48 @@ namespace Quotes.Controllers
         }
 
         // Search endpoint with pagination and optional filters
-        [HttpGet("search")]
+        // New endpoint for distinct authors with counts
+        [HttpGet("authors")]
+        public async Task<IActionResult> GetAuthors(
+            [FromQuery] string q,
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 20)
+        {
+            // Validate pagination parameters
+            if (page < 1)
+                return BadRequest("page must be >= 1");
+            if (pageSize < 1 || pageSize > 100)
+                return BadRequest("pageSize must be between 1 and 100");
+
+            var query = _context.Quote.AsNoTracking().AsQueryable();
+
+            if (!string.IsNullOrEmpty(q))
+            {
+                var pattern = $"%{q.ToLower()}%";
+                query = query.Where(qt => EF.Functions.Like(qt.Author.ToLower(), pattern));
+            }
+
+            // Group by author and count quotes
+            var grouped = query.GroupBy(qt => qt.Author)
+                               .Select(g => new { author = g.Key, count = g.Count() })
+
+            var total = await grouped.CountAsync();
+            var items = await grouped
+                .OrderByDescending(a => a.count)
+                .ThenBy(a => a.author)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var result = new
+            {
+                items,
+                page,
+                pageSize,
+                total
+            };
+            return Ok(result);
+        }
         public async Task<IActionResult> Search(
             [FromQuery] string author,
             [FromQuery] string q,
