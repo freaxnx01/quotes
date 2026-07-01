@@ -104,6 +104,47 @@ namespace Quotes.Controllers
             return new ObjectResult(item);
         }
 
+        [HttpGet("authors")]
+        public async Task<IActionResult> GetAuthors(
+            [FromQuery] string q,
+            [FromQuery] string page,
+            [FromQuery] string pageSize)
+        {
+            if (!int.TryParse(page, out int pageNum) || pageNum < 1)
+                return BadRequest("page must be >= 1");
+            if (!int.TryParse(pageSize, out int pageSizeNum) || pageSizeNum < 1 || pageSizeNum > 100)
+                return BadRequest("pageSize must be between 1 and 100");
+
+            var query = _context.Quote.AsNoTracking().AsQueryable();
+
+            if (!string.IsNullOrEmpty(q))
+            {
+                var pattern = $"%{q.ToLower()}%";
+                query = query.Where(qt => EF.Functions.Like(qt.Author.ToLower(), pattern));
+            }
+
+            var groupedQuery = query
+                .GroupBy(qt => qt.Author)
+                .Select(g => new { Author = g.Key, Count = g.Count() });
+
+            var total = await groupedQuery.CountAsync();
+            var items = await groupedQuery
+                .OrderByDescending(g => g.Count)
+                .ThenBy(g => g.Author)
+                .Skip((pageNum - 1) * pageSizeNum)
+                .Take(pageSizeNum)
+                .ToListAsync();
+
+            var result = new
+            {
+                items,
+                page = pageNum,
+                pageSize = pageSizeNum,
+                total
+            };
+            return Ok(result);
+        }
+
         [HttpGet("random")]
         public IActionResult GetRandom()
         {
