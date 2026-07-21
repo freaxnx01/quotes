@@ -21,7 +21,7 @@ jobs:
       && contains(github.event.pull_request.labels.*.name, 'ai-implement')
     # Pinned to an immutable commit SHA (supply-chain hardening), kept in lockstep
     # with claude.yml. Bump both deliberately in a reviewed PR. Current: post-v1.6.0.
-    uses: freaxnx01/agent-pipeline/.github/workflows/chain-dispatch.yml@bae2aa2d099b9ed2a595fbd680232779bf56c8bf
+    uses: freaxnx01/agent-workflow/.github/workflows/chain-dispatch.yml@bae2aa2d099b9ed2a595fbd680232779bf56c8bf
     with:
       closed-pr-number: ${{ github.event.pull_request.number }}
       # Keep the cross-repo scripts checkout on the SAME ref as `uses:` above —
